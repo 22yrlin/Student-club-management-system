@@ -77,25 +77,35 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/teamlist',
-    component: () => import('@/views/pages/teamlist/index'),
+    path: '/clublist',
+    component: () => import('@/views/pages/clublist/index'),
     hidden: true
   },
 
   {
-    path: '/teaminfo',
-    component: () => import('@/views/pages/pageinfo/index'),
+    path: '/clubinfo',
+    component: () => import('@/views/pages/clubinfo/index'),
     hidden: true
   },
   {
-    path: '/myteam',
-    component: () => import('@/views/pages/myteam/index'),
+    path: '/myclub',
+    component: () => import('@/views/pages/myclub/index'),
     hidden: true
   },
 
   {
     path: '/leave',
     component: () => import('@/views/pages/leave/index'),
+    hidden: true
+  },
+  {
+    path: '/usercenter',
+    component: () => import('@/views/pages/usercenter/index'),
+    hidden: true
+  },
+  {
+    path: '/notice',
+    component: () => import('@/views/pages/notice/index'),
     hidden: true
   },
   // {
@@ -161,7 +171,7 @@ export const constantRoutes = [
         name: 'Users',
         meta: {
           title: '用户信息管理',
-          icon: 'people',
+          icon: 'el-icon-user-solid',
           noCache: true
         }
       }
@@ -204,6 +214,24 @@ export const asyncRoutes = [
         name: 'Club',
         meta: {
           title: '社团信息管理',
+          icon: 'form',
+          noCache: true,
+          roles: ['Super', 'Admin']
+        }
+      }
+    ]
+  },
+  {
+    path: '/clubmember',
+    component: Layout,
+    redirect: '/clubmember/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/clubmember/index'),
+        name: 'Clubember',
+        meta: {
+          title: '社团成员管理',
           icon: 'peoples',
           noCache: true,
           roles: ['Super', 'Admin']
@@ -222,9 +250,81 @@ export const asyncRoutes = [
         name: 'Apply',
         meta: {
           title: '社团申请管理',
-          icon: 'form',
+          icon: 'el-icon-s-claim',
           noCache: true,
           roles: ['Super', 'Admin']
+        }
+      }
+    ]
+  },
+  {
+    path: '/activity',
+    component: Layout,
+    redirect: '/activity/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/activity/index'),
+        name: 'Activity',
+        meta: {
+          title: '社团活动管理',
+          icon: 'nested',
+          noCache: true,
+          roles: ['Super', 'Admin']
+        }
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    component: Layout,
+    redirect: '/admin/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/admin/index'),
+        name: 'Admin',
+        meta: {
+          title: '管理员管理',
+          icon: 'el-icon-s-custom',
+          noCache: true,
+          roles: ['Super']
+        }
+      }
+    ]
+  },
+  {
+    path: '/leave',
+    component: Layout,
+    redirect: '/leave/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/leave/index'),
+        name: 'Leave',
+        meta: {
+          title: '在线留言管理',
+          icon: 'message',
+          noCache: true,
+          roles: ['Super']
+        }
+      }
+    ]
+  },
+  {
+    path: '/notice',
+    component: Layout,
+    redirect: '/notice/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/notice/index'),
+        name: 'Notice',
+        meta: {
+          title: '公告管理',
+          icon: 'el-icon-s-order',
+          noCache: true,
+          roles: ['Super']
         }
       }
     ]
